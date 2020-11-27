@@ -3,7 +3,8 @@ import {Component} from '../lib/react/src/React.js'
 import { createElement } from '../lib/react/index.js'
 
 const UserStyled = styled.div`
-    background-image: linear-gradient(to bottom, #f9f9f9 0%, #f9f9f9 130px,rgba(0,0,0,.15) 130px, rgba(0,0,0,.15) 131px, white 131px, white 100%);
+    background-image: linear-gradient(to bottom, ${(props) => props.primaryColor} 0%, ${(props) => props.primaryColor} 130px,${(props) => props.tertiaryColor} 130px, ${(props) => props.tertiaryColor} 131px, ${(props) => props.secondaryColor} 131px, ${(props) => props.secondaryColor} 100%);
+    color: ${(props) => props.fontColor};
     text-align: center;
     overflow: hidden;
     padding: 20px;
@@ -65,11 +66,12 @@ class User extends Component{
         console.log(colors)
         const {avatar, name} = this.props
         return UserStyled({
+            ...colors,
             children: [
                 AvatarStyled({
                     src: avatar
                 }),
-                createElement('h2', null, name)
+                createElement('h2', null, `${name} ${mode} mode`)
             ]
         },'')
     }
