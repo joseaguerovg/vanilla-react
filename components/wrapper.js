@@ -5,10 +5,7 @@ class Wrapper extends Component {
         const { children } = this.props
         return createElement('div', {
             class: 'wrapper',
-            children,
-            onClick: function(){
-                console.log('Hola click')
-            }
+            children
         })
     }
 }
